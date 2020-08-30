@@ -18,7 +18,6 @@ public class BoardServiceImpl implements BoardService {
 	
 	@Override
 	public List<Map<String, Object>> list(Map<String, Object> map) {
-		// TODO Auto-generated method stub
 		return boardDao.list(map);
 	}
 

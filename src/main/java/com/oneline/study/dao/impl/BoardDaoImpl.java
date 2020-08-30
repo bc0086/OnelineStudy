@@ -17,7 +17,6 @@ public class BoardDaoImpl implements BoardDao {
 
 	@Override
 	public List<Map<String, Object>> list(Map<String, Object> map) {
-		// TODO Auto-generated method stub
 		return sqlSession.selectList("mapper.list", map);
 	}
 

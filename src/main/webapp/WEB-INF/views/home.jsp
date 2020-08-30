@@ -15,7 +15,7 @@
 
 <P>  The time on the server is ${serverTime}. </P>
 
-<a href="list">게시판 바로가기</a>   
+<a href="list.do">게시판 바로가기</a>   
 
 
 </body>
