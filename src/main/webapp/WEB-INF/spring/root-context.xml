@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	
+	<!-- 
+		추가 : MyBatis 연결 설정 
+		출처 : https://addio3305.tistory.com/62 [흔한 개발자의 개발 노트]
+	-->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close"> 
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/> 
+		<property name="url" value="jdbc:oracle:thin:@localhost:1521:orcl"/> 
+		<property name="username" value="jin"/> 
+		<property name="password" value="1234"/> 
+	</bean>
+	<!-- /MyBatis 연결 설정 -->
+	
+	<!-- 추가 : MyBatis와 Spring의 연결 -->
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionFactoryBean"> 
+		<property name="dataSource" ref="dataSource" /> 
+		<property name="mapperLocations" value="classpath:/mapper/*.xml" /> 
+	</bean> 
+	
+	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate"> 
+		<constructor-arg index="0" ref="sqlSession"/> 
+	</bean>
+	<!-- /MyBatis와 Spring의 연결 -->
+
+</beans>
