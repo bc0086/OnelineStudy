@@ -18,7 +18,7 @@ public class BoardServiceImpl implements BoardService {
 	
 	@Override
 	public List<Map<String, Object>> list(Map<String, Object> map) {
-		return boardDao.list(map);
+		return boardDao.list(map);  
 	}
 
 }
