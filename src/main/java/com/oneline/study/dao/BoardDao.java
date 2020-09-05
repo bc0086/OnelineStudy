@@ -7,4 +7,6 @@ public interface BoardDao {
 
 	List<Map<String, Object>> list(Map<String, Object> map);
 
+	int writeProc(Map<String, Object> writeMap);
+
 }

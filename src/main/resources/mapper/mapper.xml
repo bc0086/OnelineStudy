@@ -22,7 +22,6 @@
 	</resultMap>
 	
 	<select id="list" parameterType="map" resultMap="mapList">
-	
 		select
 			seq
 			,mem_id
@@ -33,5 +32,29 @@
 			,upt_date
 			,view_cnt
 		from board_study
+		order by seq desc
 	</select>
+	
+	<insert id="writeProc">
+		insert into board_study 
+			(
+				seq
+				,mem_id
+				, mem_name
+				, board_subject 
+				, board_content
+				, reg_date
+				, view_cnt
+			)
+		values
+			(
+				(SELECT NVL(MAX(seq), 0)+1 FROM board_study)
+				,#{memId}
+				, #{memName}
+				, #{boardSubject}
+				, #{boardContent} 
+				, sysdate
+				, 0
+			)		
+	</insert>
 </mapper>

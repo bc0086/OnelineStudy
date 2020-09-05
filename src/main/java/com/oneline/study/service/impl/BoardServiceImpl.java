@@ -21,4 +21,9 @@ public class BoardServiceImpl implements BoardService {
 		return boardDao.list(map);  
 	}
 
+	@Override
+	public int writeProc(Map<String, Object> writeMap) {
+		return boardDao.writeProc(writeMap);
+	}
+
 }

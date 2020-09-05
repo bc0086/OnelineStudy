@@ -9,6 +9,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.oneline.study.service.BoardService;
 
@@ -30,8 +31,18 @@ public class BoardController {
 	
 	// 글쓰기 페이지 이동
 	@RequestMapping("writePage.do")
-	public String write() {
+	public String writePage() {
 		return "board/write";
+	}
+	
+	// 글쓰기 기능
+	@RequestMapping("writeProc.do")
+	public String writeProc(@RequestParam Map<String, Object> writeMap) {
+		System.out.println(writeMap);
+		
+		int insert = boardService.writeProc(writeMap);
+		
+		return "redirect:list.do";
 	}
 
 }

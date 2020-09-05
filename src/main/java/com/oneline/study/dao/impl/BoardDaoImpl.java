@@ -20,4 +20,10 @@ public class BoardDaoImpl implements BoardDao {
 		return sqlSession.selectList("mapper.list", map);
 	}
 
+	@Override
+	public int writeProc(Map<String, Object> writeMap) {
+		// TODO Auto-generated method stub
+		return sqlSession.insert("mapper.writeProc", writeMap);
+	}
+
 }
